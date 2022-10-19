@@ -20,6 +20,8 @@ Route::get('/login',[AdminController::class,'Index'])->name('login_from');
 Route::post('/login/owner',[AdminController::class,'Login'])->name('admin_login');
 Route::get('/dashboard',[AdminController::class,'Dashboard'])->name('admin.dashboard')->middleware('admin');
 Route::get('/logout',[AdminController::class,'AdminLogout'])->name('admin.logout')->middleware('admin');
+Route::get('/register',[AdminController::class,'AdminRegister'])->name('admin.register');
+Route::post('/register/create',[AdminController::class,'AdminRegisterCreate'])->name('admin.register.create');
 
 
 });
