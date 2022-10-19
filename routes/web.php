@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SellerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +29,24 @@ Route::post('/register/create',[AdminController::class,'AdminRegisterCreate'])->
 
 
 /*------------------END  Admin Route ---------------------*/
+
+/*------------------ Seller Route ---------------------*/
+Route::prefix('seller')->group(function()
+{
+Route::get('/login',[SellerController::class,'Index'])->name('seller_login_from');
+Route::get('/dashboard',[SellerController::class,'SellerDashboard'])->name('seller.dashboard');
+Route::post('/login/owner',[SellerController::class,'SellerLogin'])->name('seller_login');
+;
+/*Route::get('/logout',[SellerController::class,'AdminLogout'])->name('admin.logout')->middleware('seller');
+Route::get('/register',[SellerController::class,'AdminRegister'])->name('admin.register');
+Route::post('/register/create',[SellerController::class,'AdminRegisterCreate'])->name('admin.register.create');*/
+
+
+});
+
+
+/*------------------END  Seller Route ---------------------*/
+
 
 
 
