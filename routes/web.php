@@ -33,13 +33,13 @@ Route::post('/register/create',[AdminController::class,'AdminRegisterCreate'])->
 /*------------------ Seller Route ---------------------*/
 Route::prefix('seller')->group(function()
 {
-Route::get('/login',[SellerController::class,'Index'])->name('seller_login_from');
-Route::get('/dashboard',[SellerController::class,'SellerDashboard'])->name('seller.dashboard');
+Route::get('/login',[SellerController::class,'SellerIndex'])->name('seller_login_from');
+Route::get('/dashboard',[SellerController::class,'SellerDashboard'])->name('seller.dashboard')->middleware('seller');
 Route::post('/login/owner',[SellerController::class,'SellerLogin'])->name('seller_login');
 ;
-/*Route::get('/logout',[SellerController::class,'AdminLogout'])->name('admin.logout')->middleware('seller');
-Route::get('/register',[SellerController::class,'AdminRegister'])->name('admin.register');
-Route::post('/register/create',[SellerController::class,'AdminRegisterCreate'])->name('admin.register.create');*/
+Route::get('/logout',[SellerController::class,'SellerLogout'])->name('seller.logout')->middleware('seller');
+Route::get('/register',[SellerController::class,'SellerRegister'])->name('seller.register');
+Route::post('/register/create',[SellerController::class,'SellerRegisterCreate'])->name('seller.register.create');
 
 
 });
